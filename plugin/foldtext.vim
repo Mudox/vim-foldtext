@@ -27,12 +27,22 @@ endfunction "  }}}1
 
 " HELPER FUNCTIONS {{{1
 
-function FoldLevelIndent(padding) " {{{2
+" can only be used in fold functions.
+function! FoldLevelIndent(padding) " {{{2
   let level_indent = ''
   for x in range(foldlevel(v:foldstart))
     let level_indent = level_indent . a:padding
   endfor
   return level_indent
+endfunction "  }}}2
+
+function! StripFolderMarker(line) " {{{2
+  if &l:foldmethod ==# 'marker'
+    let [mk_open, mk_close] = split(&l:foldmarker, ',')
+    let mk_open = escape(mk_open, '\')
+    let ret_line = substitute(a:line, '\V\C' . mk_open . '\m\d\?\s*$', '', '')
+  endif
+  return ret_line
 endfunction "  }}}2
 
 " }}}1
