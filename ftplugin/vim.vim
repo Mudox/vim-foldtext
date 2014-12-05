@@ -1,6 +1,10 @@
 " vim: foldmethod=marker
 
 function! VimFoldText() " {{{1
+  if &l:foldmethod !=# 'marker'
+    return getline(v:foldstart)
+  endif
+
   let foldline = getline(v:foldstart)
 
   " remove comment marker
