@@ -41,10 +41,10 @@ function! StripFolderMarker(line) " {{{2
     let [mk_open, mk_close] = split(&l:foldmarker, ',')
     let mk_open = escape(mk_open, '\')
     let ret_line = substitute(a:line, '\V\C' . mk_open . '\m\d\?\s*$', '', '')
+    return ret_line
   else
     return line
   endif
-  return ret_line
 endfunction "  }}}2
 
 " }}}1
