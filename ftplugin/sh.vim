@@ -21,4 +21,3 @@ function! ShFoldText() " {{{1
 endfunction "  }}}1
 
 setlocal foldtext=ShFoldText()
-
