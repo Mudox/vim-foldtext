@@ -7,7 +7,8 @@ endif
 let s:loaded = 1
 " }}}1
 
-let g:foldline_fancy_symbol = '»'
+let &fillchars = 'vert:|,fold: '
+let g:foldline_fancy_symbol = '  '
 
 function GlobalFoldText() " {{{1
   let foldline = getline(v:foldstart)
@@ -30,9 +31,7 @@ endfunction "  }}}1
 " can only be used in fold functions.
 function! FoldLevelIndent(padding) " {{{2
   let level_indent = ''
-  for x in range(foldlevel(v:foldstart))
-    let level_indent = level_indent . a:padding
-  endfor
+  let level_indent = level_indent . repeat(a:padding, foldlevel(v:foldstart))
   return level_indent
 endfunction "  }}}2
 
