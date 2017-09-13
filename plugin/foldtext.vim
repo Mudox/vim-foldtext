@@ -7,7 +7,7 @@ endif
 let s:loaded = 1
 " }}}1
 
-let &fillchars = 'vert:|,fold: '
+set fillchars=
 let g:foldline_fancy_symbol = '  '
 
 function GlobalFoldText() " {{{1
